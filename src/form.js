@@ -38,7 +38,6 @@ export default () => {
   const [results, setResults] = React.useState('');
 
   React.useEffect(() => {
-    console.log(values)
     let getHTML = () => {
       let tag = config.tag[values.tag];
       let delimiter = (delimiter === 'Special Character' ? values.special : new RegExp(config.delimiter[values.delimiter]));
@@ -62,7 +61,6 @@ export default () => {
       setResults('');
     }
   },[values, results, config])
-
   return (
     <Grid container justify="center" spacing={3}>
       <Grid item xs={12}>

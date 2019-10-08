@@ -5,17 +5,22 @@ import {
   FormControl,
   Select,
   FormHelperText,
+  Paper
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120
   }
 }));
 
-export default (props) => {
+export default props => {
+  const inputLabel = React.useRef(null);
+  const [labelWidth, setLabelWidth] = React.useState(0);
+  React.useEffect(() => {
+    setLabelWidth(inputLabel.current.offsetWidth);
+  }, []);
   const classes = useStyles();
   const handleChange = event => {
     const name = event.target.name;
@@ -29,20 +34,22 @@ export default (props) => {
       fullWidth={true}
       required
     >
-      <InputLabel htmlFor="form-tag">HTML Tag</InputLabel>
-      <Select
-        value={props.value}
-        inputProps={{
-          name: "tag",
-          id: "form-tag"
-        }}
-        onChange={handleChange}
-      >
-        <MenuItem value="UL/LI">UL/LI</MenuItem>
-        <MenuItem value="SPAN">SPAN</MenuItem>
-        <MenuItem value="P">P</MenuItem>
-      </Select>
-      <FormHelperText>Tag used to wrap your input string.</FormHelperText>
+        <InputLabel ref={inputLabel} htmlFor="form-tag">HTML Tag</InputLabel>
+        <Select
+          value={props.value}
+          inputProps={{
+            name: "tag",
+            id: "form-tag"
+          }}
+          onChange={handleChange}
+          fullWidth={true}
+          labelWidth={labelWidth}
+        >
+          <MenuItem value="UL/LI">UL/LI</MenuItem>
+          <MenuItem value="SPAN">SPAN</MenuItem>
+          <MenuItem value="P">P</MenuItem>
+        </Select>
+        <FormHelperText>Tag used to wrap your input string.</FormHelperText>
     </FormControl>
   );
 };

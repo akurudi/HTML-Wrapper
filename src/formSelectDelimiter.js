@@ -11,13 +11,17 @@ import FormTextSpecial from "./formTextSpecial";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120
+    margin: theme.spacing(1)
   }
 }));
 
 export default props => {
   const classes = useStyles();
+  const inputLabel = React.useRef(null);
+  const [labelWidth, setLabelWidth] = React.useState(0);
+  React.useEffect(() => {
+    setLabelWidth(inputLabel.current.offsetWidth);
+  }, []);
   const [showField, setField] = React.useState(false);
   const handleChange = event => {
     const name = event.target.name;
@@ -38,7 +42,7 @@ export default props => {
         fullWidth={true}
         required
       >
-        <InputLabel htmlFor="form-delimiter">Delimiter</InputLabel>
+        <InputLabel ref={inputLabel} htmlFor="form-delimiter">Delimiter</InputLabel>
         <Select
           value={props.value}
           inputProps={{
@@ -46,6 +50,7 @@ export default props => {
             id: "form-delimiter"
           }}
           onChange={handleChange}
+          labelWidth={labelWidth}
         >
           <MenuItem value="Newline">Newline</MenuItem>
           <MenuItem value="Space">Space</MenuItem>
