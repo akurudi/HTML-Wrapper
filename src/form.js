@@ -40,7 +40,7 @@ export default () => {
   React.useEffect(() => {
     let getHTML = () => {
       let tag = config.tag[values.tag];
-      let delimiter = (delimiter === 'Special Character' ? values.special : new RegExp(config.delimiter[values.delimiter]));
+      let delimiter = (values.delimiter === 'Special Character' ? values.special : new RegExp(config.delimiter[values.delimiter]));
       let inputStrArr = values.input.split(delimiter).filter(elem => elem !== "");
       if(tag === 'ul') {
         let outputStrArr = inputStrArr.map(ip => {
@@ -62,7 +62,7 @@ export default () => {
     }
   },[values, results, config])
   return (
-    <Grid container justify="center" spacing={3}>
+    <Grid container>
       <Grid item xs={12}>
         <Paper>
           <Grid container justify="center">
