@@ -4,7 +4,7 @@ import { makeStyles, withStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
-    padding: theme.spacing(1)
+    //padding: theme.spacing(1)
   }
 }));
 

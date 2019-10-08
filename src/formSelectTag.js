@@ -4,14 +4,13 @@ import {
   MenuItem,
   FormControl,
   Select,
-  FormHelperText,
-  Paper
+  FormHelperText
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
-    margin: theme.spacing(1),
+    //marginTop: theme.spacing(1),
   }
 }));
 
@@ -42,7 +41,6 @@ export default props => {
             id: "form-tag"
           }}
           onChange={handleChange}
-          fullWidth={true}
           labelWidth={labelWidth}
         >
           <MenuItem value="UL/LI">UL/LI</MenuItem>

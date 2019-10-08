@@ -4,14 +4,15 @@ import {
   MenuItem,
   FormControl,
   Select,
-  FormHelperText
+  FormHelperText,
+  Box
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import FormTextSpecial from "./formTextSpecial";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
-    margin: theme.spacing(1)
+    //margin: theme.spacing(1)
   }
 }));
 
@@ -42,7 +43,9 @@ export default props => {
         fullWidth={true}
         required
       >
-        <InputLabel ref={inputLabel} htmlFor="form-delimiter">Delimiter</InputLabel>
+        <InputLabel ref={inputLabel} htmlFor="form-delimiter">
+          Delimiter
+        </InputLabel>
         <Select
           value={props.value}
           inputProps={{
@@ -60,10 +63,12 @@ export default props => {
           Token used to split your input string before wrapping it with tags.
         </FormHelperText>
       </FormControl>
-      <FormTextSpecial
-        showSpecialField={showField}
-        handleSpecialFieldChange={props.handleDelimiterChange}
-      />
+      <Box p={2} m={1} color="secondary.main">
+        <FormTextSpecial
+          showSpecialField={showField}
+          handleSpecialFieldChange={props.handleDelimiterChange}
+        />
+      </Box>
     </>
   );
 };
