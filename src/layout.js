@@ -1,12 +1,12 @@
 import React from "react";
 import { Container } from "@material-ui/core";
 
-export default (props) => {
+export default props => {
   return (
-    <>
+    <Container>
       <header>{props.header}</header>
-      <Container>{props.children}</Container>
+      {props.children}
       <footer>{props.footer}</footer>
-    </>
+    </Container>
   );
 };

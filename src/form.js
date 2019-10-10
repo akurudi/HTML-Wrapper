@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper, Grid, Container, Slide } from "@material-ui/core";
+import { Paper, Grid, Slide } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import FormSelectTag from "./formSelectTag";
 import FormSelectDelimiter from "./formSelectDelimiter";
@@ -88,50 +88,48 @@ export default () => {
     }
   }, [values, results, config]);
   return (
-    <Container>
-      <Grid container justify="center">
-        <Grid item xs={12}>
-          <PaperContainer elevation={20}>
-            <form autoComplete="off">
+    <Grid container justify="center">
+      <Grid item xs={12}>
+        <PaperContainer elevation={20}>
+          <form autoComplete="off">
+            <PaperForm elevation={5}>
+              <FormSelectTag
+                value={values.tag}
+                handleTagChange={handleChange}
+              />
+            </PaperForm>
+            <PaperForm elevation={5}>
+              <FormSelectDelimiter
+                value={values.delimiter}
+                handleDelimiterChange={handleChange}
+              />
+            </PaperForm>
+            <PaperForm elevation={5}>
+              <FormTextClass
+                value={values.class}
+                handleClassChange={handleChange}
+              />
+            </PaperForm>
+            <PaperForm elevation={5}>
+              <FormTextInput
+                value={values.input}
+                handleInputChange={handleChange}
+              />
+            </PaperForm>
+            <Slide
+              in={results === "" ? false : true}
+              direction="up"
+              timeout={{ enter: 500 }}
+              mountOnEnter
+              unmountOnExit
+            >
               <PaperForm elevation={5}>
-                <FormSelectTag
-                  value={values.tag}
-                  handleTagChange={handleChange}
-                />
+                <FormTextOutput value={results} />
               </PaperForm>
-              <PaperForm elevation={5}>
-                <FormSelectDelimiter
-                  value={values.delimiter}
-                  handleDelimiterChange={handleChange}
-                />
-              </PaperForm>
-              <PaperForm elevation={5}>
-                <FormTextClass
-                  value={values.class}
-                  handleClassChange={handleChange}
-                />
-              </PaperForm>
-              <PaperForm elevation={5}>
-                <FormTextInput
-                  value={values.input}
-                  handleInputChange={handleChange}
-                />
-              </PaperForm>
-              <Slide
-                in={results === "" ? false : true}
-                direction="up"
-                timeout={{ enter: 500 }}
-                mountOnEnter
-                unmountOnExit
-              >
-                <PaperForm elevation={5}>
-                  <FormTextOutput value={results} />
-                </PaperForm>
-              </Slide>
-            </form>
-          </PaperContainer>
-        </Grid>
+            </Slide>
+          </form>
+        </PaperContainer>
       </Grid>
-    </Container>
+    </Grid>
   );
 };
