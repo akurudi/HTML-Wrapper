@@ -1,33 +1,27 @@
 import React from "react";
 import { TextField, FormControl, FormHelperText } from "@material-ui/core";
-import { makeStyles, withStyles } from "@material-ui/styles";
-
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    //padding: theme.spacing(1)
-  }
-}));
-
+import { withStyles } from "@material-ui/styles";
 
 const CssTextField = withStyles({
   root: {
+    background: "#303030db",
     "& label.MuiFormLabel-root": {
-      color: "green"
+      color: "white"
     },
     "& .MuiInput-underline:after": {
-      borderBottomColor: "green"
+      borderBottomColor: "white"
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "green",
+        borderColor: "white",
         borderWidth: "2px"
       },
       "&:hover fieldset": {
-        borderColor: "green",
+        borderColor: "white",
         borderWidth: "4px"
       },
       "&.Mui-focused fieldset": {
-        borderColor: "green",
+        borderColor: "white",
         borderWidth: "4px"
       }
     }
@@ -35,18 +29,15 @@ const CssTextField = withStyles({
 })(TextField);
 
 export default props => {
-  const classes = useStyles();
   return (
     <FormControl
       variant="filled"
-      className={classes.formControl}
       fullWidth={true}
       required
     >
       <CssTextField
         id="form-results"
-        className={classes.margin}
-        label="Results"
+        label="Output"
         multiline
         rows="10"
         variant="outlined"

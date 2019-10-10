@@ -6,13 +6,6 @@ import {
   Select,
   FormHelperText
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
-
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    //marginTop: theme.spacing(1),
-  }
-}));
 
 export default props => {
   const inputLabel = React.useRef(null);
@@ -20,7 +13,6 @@ export default props => {
   React.useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
-  const classes = useStyles();
   const handleChange = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -29,7 +21,6 @@ export default props => {
   return (
     <FormControl
       variant="outlined"
-      className={classes.formControl}
       fullWidth={true}
       required
     >

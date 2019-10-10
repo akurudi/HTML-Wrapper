@@ -4,17 +4,8 @@ import {
   FormControl,
   FormHelperText
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
-
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    //padding: theme.spacing(1)
-  }
-}));
-
 
 export default props => {
-  const classes = useStyles();
   const handleChange = event => {
     const name = event.target.name;
     const value = event.target.value.trim();
@@ -23,13 +14,11 @@ export default props => {
   return (
     <FormControl
       variant="filled"
-      className={classes.formControl}
       fullWidth={true}
       required
     >
       <TextField
         label="Class Value"
-        className={classes.textField}
         variant="outlined"
         name="class"
         id="form-class-value"
