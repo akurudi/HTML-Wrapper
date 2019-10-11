@@ -19,26 +19,26 @@ export default props => {
     props.handleTagChange(name, value);
   };
   return (
-    <FormControl
-      variant="outlined"
-      fullWidth={true}
-      required
-    >
-        <InputLabel ref={inputLabel} htmlFor="form-tag">HTML Tag</InputLabel>
-        <Select
-          value={props.value}
-          inputProps={{
-            name: "tag",
-            id: "form-tag"
-          }}
-          onChange={handleChange}
-          labelWidth={labelWidth}
-        >
-          <MenuItem value="UL/LI">UL/LI</MenuItem>
-          <MenuItem value="SPAN">SPAN</MenuItem>
-          <MenuItem value="P">P</MenuItem>
-        </Select>
-        <FormHelperText>Tag used to wrap your input string.</FormHelperText>
+    <FormControl variant="outlined" fullWidth={true} required>
+      <InputLabel ref={inputLabel} htmlFor="form-tag">
+        HTML Tag
+      </InputLabel>
+      <Select
+        value={props.value}
+        inputProps={{
+          name: "tag",
+          id: "form-tag"
+        }}
+        onChange={handleChange}
+        labelWidth={labelWidth}
+      >
+        {Object.keys(props.options).map(option => (
+          <MenuItem value={option} key={option}>
+            {option}
+          </MenuItem>
+        ))}
+      </Select>
+      <FormHelperText>Tag used to wrap your input string.</FormHelperText>
     </FormControl>
   );
 };

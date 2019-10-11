@@ -1,42 +1,16 @@
 import React from "react";
-import { Paper, Grid, Slide } from "@material-ui/core";
-import { withStyles } from "@material-ui/styles";
+import { Grid, Slide } from "@material-ui/core";
 import FormSelectTag from "./formSelectTag";
 import FormSelectDelimiter from "./formSelectDelimiter";
 import FormTextClass from "./formTextClass";
 import FormTextInput from "./formTextInput";
 import FormTextOutput from "./formTextOutput";
+import PaperCustom from "./paperCustom";
+import config from "./appConfig";
 
-const PaperContainer = withStyles(theme => ({
-  root: {
-    background: theme.palette.primary.main,
-    margin: theme.spacing(2),
-    padding: theme.spacing(2)
-  }
-}))(Paper);
-
-const PaperForm = withStyles(theme => ({
-  root: {
-    background: theme.palette.primary.dark,
-    margin: theme.spacing(2),
-    padding: theme.spacing(2)
-  }
-}))(Paper);
+const { tags, delimiters } = config;
 
 export default () => {
-  const config = {
-    tag: {
-      "UL/LI": "ul",
-      P: "p",
-      SPAN: "span"
-    },
-    delimiter: {
-      Newline: "\\n",
-      Space: "\\s",
-      "Special Character": ":"
-    }
-  };
-
   const [values, setValues] = React.useState({
     tag: "UL/LI",
     delimiter: "Newline",
@@ -45,6 +19,8 @@ export default () => {
     input: ""
   });
 
+  const [results, setResults] = React.useState("");
+
   const handleChange = (name, value) => {
     setValues(oldValues => ({
       ...oldValues,
@@ -52,15 +28,13 @@ export default () => {
     }));
   };
 
-  const [results, setResults] = React.useState("");
-
   React.useEffect(() => {
     let getHTML = () => {
-      let tag = config.tag[values.tag];
+      let tag = tags[values.tag];
       let delimiter =
         values.delimiter === "Special Character"
           ? values.special
-          : new RegExp(config.delimiter[values.delimiter]);
+          : new RegExp(delimiters[values.delimiter]);
       let inputStrArr = values.input
         .split(delimiter)
         .filter(elem => elem !== "");
@@ -86,36 +60,39 @@ export default () => {
     } else {
       setResults("");
     }
-  }, [values, results, config]);
+  }, [values, results]);
+
   return (
     <Grid container justify="center">
       <Grid item xs={12}>
-        <PaperContainer elevation={20}>
+        <PaperCustom background="main" paperElevation={20}>
           <form autoComplete="off">
-            <PaperForm elevation={5}>
+            <PaperCustom background="dark" paperElevation={10}>
               <FormSelectTag
+                options={tags}
                 value={values.tag}
                 handleTagChange={handleChange}
               />
-            </PaperForm>
-            <PaperForm elevation={5}>
+            </PaperCustom>
+            <PaperCustom background="dark" paperElevation={10}>
               <FormSelectDelimiter
+                options={delimiters}
                 value={values.delimiter}
                 handleDelimiterChange={handleChange}
               />
-            </PaperForm>
-            <PaperForm elevation={5}>
+            </PaperCustom>
+            <PaperCustom background="dark" paperElevation={10}>
               <FormTextClass
                 value={values.class}
                 handleClassChange={handleChange}
               />
-            </PaperForm>
-            <PaperForm elevation={5}>
+            </PaperCustom>
+            <PaperCustom background="dark" paperElevation={10}>
               <FormTextInput
                 value={values.input}
                 handleInputChange={handleChange}
               />
-            </PaperForm>
+            </PaperCustom>
             <Slide
               in={results === "" ? false : true}
               direction="up"
@@ -123,12 +100,12 @@ export default () => {
               mountOnEnter
               unmountOnExit
             >
-              <PaperForm elevation={5}>
+              <PaperCustom ref={React.createRef()} background="dark" paperElevation={10}>
                 <FormTextOutput value={results} />
-              </PaperForm>
+              </PaperCustom>
             </Slide>
           </form>
-        </PaperContainer>
+        </PaperCustom>
       </Grid>
     </Grid>
   );

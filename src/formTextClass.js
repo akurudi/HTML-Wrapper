@@ -27,7 +27,7 @@ export default props => {
         InputLabelProps={{ shrink: true }}
       />
       <FormHelperText>
-        Optional value, if present will be added as a class attribute to the
+        Optional value if present, will be added as a class attribute to the
         tag.
       </FormHelperText>
     </FormControl>

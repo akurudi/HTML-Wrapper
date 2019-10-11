@@ -5,7 +5,7 @@ import cyan from "@material-ui/core/colors/cyan";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Layout from "./layout";
 import Header from "./header";
-import MainForm from "./form";
+import FormMain from "./formMain";
 
 const cyanMain = cyan[800]
 
@@ -23,7 +23,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Layout header={<Header />} footer={null}>
-        <MainForm />
+        <FormMain />
       </Layout>
     </ThemeProvider>
   );

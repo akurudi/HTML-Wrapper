@@ -30,11 +30,7 @@ export default props => {
 
   return (
     <>
-      <FormControl
-        variant="outlined"
-        fullWidth={true}
-        required
-      >
+      <FormControl variant="outlined" fullWidth={true} required>
         <InputLabel ref={inputLabel} htmlFor="form-delimiter">
           Delimiter
         </InputLabel>
@@ -47,9 +43,11 @@ export default props => {
           onChange={handleChange}
           labelWidth={labelWidth}
         >
-          <MenuItem value="Newline">Newline</MenuItem>
-          <MenuItem value="Space">Space</MenuItem>
-          <MenuItem value="Special Character">Special Character</MenuItem>
+          {Object.keys(props.options).map(option => (
+            <MenuItem value={option} key={option}>
+              {option}
+            </MenuItem>
+          ))}
         </Select>
         <FormHelperText>
           Token used to split your input string before wrapping it with tags.
