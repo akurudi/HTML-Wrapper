@@ -1,68 +1,51 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# HTML WRAPPER
 
-## Available Scripts
+This app can be used to wrap any input string with a HTML or XML style tag. It splits the input string based on a delimter you provide and wraps it with the selected tag. This is particularly useful when you have a lot of content that needs to be wrapped in `<UL>` and `<LI>` tags.
+```
+<TAG>
+  Input String
+</TAG>
+```
+It can take any delimter including a special characters or alphanumeric value to split the input string. It then wraps the split string with the selected tag. 
 
-In the project directory, you can run:
+It also accepts an optional *Class Value* that will get added as a class attribute to the selected tag. Example: `<span class="class_name">`
 
-### `yarn start`
+## Installation
+You can install project dependacies using either `npm` or `yarn`.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Usage
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## App Configuration
+App comes with some default tags and delimiters already in place. You can customize them by editing `src/appConfig.js`. `tags` object holds values for the *Tags* selector and `delimiters` object holds values for the *Dilimiter* selector. 
 
-### `yarn test`
+**DO NOT** remove `"Special Characters"` from the `delimiter` object as it is being refrenced within the app. Choosing this delimiter will make the app look for a value from *Special Character Delimiter* input field.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+tags = {
+  "UL/LI": "ul",
+  "P": "p",
+  "SPAN": "span",
+}
+```
+```
+{
+  "Newline": "\\n",
+  "Space": "\\s",
+  "Special Character": ""
+}
+```
+### Running The App
+This app is built using [Create React App](https://github.com/facebook/create-react-app) so, all default scripts apply.
 
-### `yarn build`
+```
+"scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+}
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Theming
+App is built using [Material UI](https://material-ui.com/) components. Theme configuration for app is done using a `<ThemeProvider>` that accepts a `theme` property. You can customize the theme by editing `src/utils/theme.js`.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

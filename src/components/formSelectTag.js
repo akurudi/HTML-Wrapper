@@ -22,7 +22,7 @@ export default props => {
   return (
     <FormControl variant="outlined" fullWidth={true} required>
       <InputLabel ref={inputLabel} htmlFor="form-tag">
-        HTML Tag
+        Tag
       </InputLabel>
       <Select
         value={props.value}
