@@ -6,9 +6,7 @@ import FormTextClass from "./formTextClass";
 import FormTextInput from "./formTextInput";
 import FormTextOutput from "./formTextOutput";
 import PaperCustom from "./paperCustom";
-import config from "./appConfig";
-
-const { tags, delimiters } = config;
+import getHTML from "../utils/getHTML";
 
 export default () => {
   const [values, setValues] = React.useState({
@@ -29,33 +27,8 @@ export default () => {
   };
 
   React.useEffect(() => {
-    let getHTML = () => {
-      let tag = tags[values.tag];
-      let delimiter =
-        values.delimiter === "Special Character"
-          ? values.special
-          : new RegExp(delimiters[values.delimiter]);
-      let inputStrArr = values.input
-        .split(delimiter)
-        .filter(elem => elem !== "");
-      if (tag === "ul") {
-        let outputStrArr = inputStrArr.map(ip => {
-          return `\n<li>${ip.trim()}</li>`;
-        });
-        return `<${tag}${
-          values.class !== "" ? ' class="' + values.class + '"' : ""
-        }> ${outputStrArr.join("")} \n</${tag}>`;
-      } else {
-        let outputStrArr = inputStrArr.map(ip => {
-          return `<${tag}${
-            values.class !== "" ? ' class="' + values.class + '"' : ""
-          }>${ip.trim()}</${tag}>\n`;
-        });
-        return outputStrArr.join("");
-      }
-    };
     if (values.input !== "") {
-      let html = getHTML();
+      let html = getHTML(values);
       setResults(html);
     } else {
       setResults("");
@@ -69,14 +42,12 @@ export default () => {
           <form autoComplete="off">
             <PaperCustom background="dark" paperElevation={10}>
               <FormSelectTag
-                options={tags}
                 value={values.tag}
                 handleTagChange={handleChange}
               />
             </PaperCustom>
             <PaperCustom background="dark" paperElevation={10}>
               <FormSelectDelimiter
-                options={delimiters}
                 value={values.delimiter}
                 handleDelimiterChange={handleChange}
               />

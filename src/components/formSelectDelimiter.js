@@ -9,6 +9,7 @@ import {
   Collapse
 } from "@material-ui/core";
 import FormTextSpecial from "./formTextSpecial";
+import { delimiters } from "../appConfig";
 
 export default props => {
   const inputLabel = React.useRef(null);
@@ -43,7 +44,7 @@ export default props => {
           onChange={handleChange}
           labelWidth={labelWidth}
         >
-          {Object.keys(props.options).map(option => (
+          {Object.keys(delimiters).map(option => (
             <MenuItem value={option} key={option}>
               {option}
             </MenuItem>

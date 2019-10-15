@@ -1,22 +1,10 @@
 import React from "react";
 import { ThemeProvider } from "@material-ui/styles";
-import { createMuiTheme } from "@material-ui/core/styles";
-import cyan from "@material-ui/core/colors/cyan";
+import theme from "./utils/theme"
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Layout from "./layout";
-import Header from "./header";
-import FormMain from "./formMain";
-
-const cyanMain = cyan[800]
-
-const theme = createMuiTheme({
-  palette: {
-    type: "dark",
-    primary: {
-      main: cyanMain,
-    }
-  }
-});
+import Layout from "./components/layout";
+import Header from "./components/header";
+import FormMain from "./components/formMain";
 
 const App = () => {
   return (
