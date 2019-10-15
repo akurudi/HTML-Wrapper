@@ -15,7 +15,7 @@ You can install project dependacies using either `npm` or `yarn`.
 
 ## Usage
 
-## App Configuration
+### App Configuration
 App comes with some default tags and delimiters already in place. You can customize them by editing `src/appConfig.js`. `tags` object holds values for the *Tags* selector and `delimiters` object holds values for the *Dilimiter* selector. 
 
 **DO NOT** remove `"Special Characters"` from the `delimiter` object as it is being refrenced within the app. Choosing this delimiter will make the app look for a value from *Special Character Delimiter* input field.
