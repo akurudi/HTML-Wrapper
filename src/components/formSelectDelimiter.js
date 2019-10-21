@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {
   InputLabel,
   MenuItem,
@@ -11,7 +12,7 @@ import {
 import FormTextSpecial from "./formTextSpecial";
 import { delimiters } from "../appConfig";
 
-export default props => {
+let FormSelectDelimiter = props => {
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
@@ -64,3 +65,10 @@ export default props => {
     </>
   );
 };
+
+FormSelectDelimiter.propTypes = {
+  value: PropTypes.string.isRequired,
+  handleDelimiterChange: PropTypes.func.isRequired
+}
+
+export default FormSelectDelimiter;

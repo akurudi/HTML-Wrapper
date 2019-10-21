@@ -1,8 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from "react-helmet";
 
-export default (props) => (
+  let pageTitle = props => (
   <Helmet>
     <title>{props.title}</title>
   </Helmet>
 );
+
+pageTitle.propTypes = {
+  title: PropTypes.string.isRequired
+};
+
+export default pageTitle;

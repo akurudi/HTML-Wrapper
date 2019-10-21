@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
@@ -13,9 +14,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default React.forwardRef(
+let PaperCustom = React.forwardRef(
   (props, ref) => {
     const classes = useStyles(props);
     return <Paper className={classes.root} ref={ref} elevation={props.paperElevation}>{props.children}</Paper>;
   }
 )
+
+
+PaperCustom.propTypes = {
+  background :PropTypes.string,
+  paperElevation: PropTypes.number,
+  children: PropTypes.element
+}
+
+export default PaperCustom;

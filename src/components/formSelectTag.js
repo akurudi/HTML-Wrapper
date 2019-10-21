@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {
   InputLabel,
   MenuItem,
@@ -8,7 +9,7 @@ import {
 } from "@material-ui/core";
 import { tags } from "../appConfig";
 
-export default props => {
+let FormSelectTag = props => {
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
@@ -43,3 +44,10 @@ export default props => {
     </FormControl>
   );
 };
+
+FormSelectTag.propTypes = {
+  value: PropTypes.string.isRequired,
+  handleTagChange: PropTypes.func.isRequired
+}
+
+export default FormSelectTag;

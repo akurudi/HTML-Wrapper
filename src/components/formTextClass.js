@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {
   TextField,
   FormControl,
   FormHelperText
 } from "@material-ui/core";
 
-export default props => {
+let FormTextClass = props => {
   const handleChange = event => {
     const name = event.target.name;
     const value = event.target.value.trim();
@@ -33,3 +34,10 @@ export default props => {
     </FormControl>
   );
 };
+
+FormTextClass.propTypes = {
+  value: PropTypes.string.isRequired,
+  handleClassChange: PropTypes.func.isRequired
+}
+
+export default FormTextClass;

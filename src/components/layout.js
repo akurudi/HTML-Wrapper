@@ -1,14 +1,21 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Container } from "@material-ui/core";
 import PageTitle from "./pageTitle"
 
-export default props => {
+let Layout = props => {
   return (
     <Container>
       <PageTitle title="HTML Wrapper" />
       <header>{props.header}</header>
       {props.children}
-      <footer>{props.footer}</footer>
     </Container>
   );
 };
+
+Layout.propTypes = {
+  header: PropTypes.element.isRequired,
+  children: PropTypes.element
+};
+
+export default Layout;

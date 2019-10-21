@@ -1,11 +1,11 @@
 import React from "react";
 import { Grid, Slide } from "@material-ui/core";
+import PaperCustom from "./paperCustom";
 import FormSelectTag from "./formSelectTag";
 import FormSelectDelimiter from "./formSelectDelimiter";
 import FormTextClass from "./formTextClass";
 import FormTextInput from "./formTextInput";
 import FormTextOutput from "./formTextOutput";
-import PaperCustom from "./paperCustom";
 import getHTML from "../utils/getHTML";
 
 export default () => {

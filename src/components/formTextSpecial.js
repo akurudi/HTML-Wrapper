@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {
   TextField,
   FormControl,
   FormHelperText
 } from "@material-ui/core";
 
-export default props => {
+let FormTextSpecial = props => {
   const handleChange = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -33,3 +34,9 @@ export default props => {
       </FormControl>
   );
 };
+
+FormTextSpecial.propTypes = {
+  handleSpecialFieldChange: PropTypes.func.isRequired
+}
+
+export default FormTextSpecial;

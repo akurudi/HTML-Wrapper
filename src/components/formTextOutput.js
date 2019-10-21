@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Box, FormControl, FormHelperText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import selectAllText from "../utils/selectAllText"
 
-export default props => {
+let FormTextOutput = props => {
   const useStyles = makeStyles({
     root: {
       background: "#303030db"
@@ -28,3 +29,10 @@ export default props => {
     </FormControl>
   );
 };
+
+
+FormTextOutput.propTypes = {
+  value: PropTypes.string.isRequired,
+}
+
+export default FormTextOutput;

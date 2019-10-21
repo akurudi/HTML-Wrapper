@@ -10,7 +10,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Layout header={<Header />} footer={null}>
+      <Layout header={<Header />}>
         <FormMain />
       </Layout>
     </ThemeProvider>
