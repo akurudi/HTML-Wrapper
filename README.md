@@ -10,6 +10,11 @@ It can take any delimter including a special characters or alphanumeric value to
 
 It also accepts an optional *Class Value* that will get added as a class attribute to the selected tag. Example: `<span class="class_name">`
 
+## Tech Stack
+1. ReactJS
+2. MaterialUI
+3. Zeit Now
+
 ## Installation
 You can install project dependacies using either `npm` or `yarn`.
 
